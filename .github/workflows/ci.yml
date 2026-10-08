@@ -1,0 +1,31 @@
+name: CI
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: npm run check
+      - run: npm test
+      - name: Validate plugin metadata
+        run: |
+          python3 - <<'PY'
+          import json, tomllib
+          from pathlib import Path
+          plugin = tomllib.loads(Path('herdr-plugin.toml').read_text())
+          package = json.loads(Path('package.json').read_text())
+          for key in ('id', 'name', 'version', 'min_herdr_version', 'platforms'):
+              assert plugin[key], f'Missing plugin metadata: {key}'
+          assert plugin['version'] == package['version'], 'Plugin/package versions differ'
+          PY

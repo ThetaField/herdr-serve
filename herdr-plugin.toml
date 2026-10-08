@@ -1,0 +1,102 @@
+id = "herdr.serve"
+name = "Herdr Serve"
+version = "0.1.0"
+min_herdr_version = "0.9.1"
+description = "Mobile-friendly browser access to your Herdr session"
+platforms = ["linux", "macos"]
+
+[[build]]
+command = ["npm", "ci"]
+
+[[build]]
+command = ["npm", "run", "build"]
+
+[[actions]]
+id = "start"
+title = "Start browser access"
+contexts = ["workspace"]
+command = ["node", "plugin/manage.js", "start"]
+
+[[actions]]
+id = "stop"
+title = "Stop browser access"
+contexts = ["workspace"]
+command = ["node", "plugin/manage.js", "stop"]
+
+[[actions]]
+id = "status"
+title = "Browser access status"
+contexts = ["workspace"]
+command = ["node", "plugin/manage.js", "status"]
+
+[[actions]]
+id = "panel"
+title = "Browser access panel"
+contexts = ["workspace"]
+command = ["node", "plugin/manage.js", "panel"]
+
+[[panes]]
+id = "control"
+title = "Herdr Serve"
+placement = "overlay"
+command = ["node", "plugin/manage.js", "ui"]
+
+[[actions]]
+id = "funnel-on"
+title = "Enable public Tailscale Funnel (token required)"
+contexts = ["workspace"]
+command = ["node", "plugin/manage.js", "funnel-on"]
+
+[[actions]]
+id = "funnel-off"
+title = "Disable public Tailscale Funnel"
+contexts = ["workspace"]
+command = ["node", "plugin/manage.js", "funnel-off"]
+
+[[actions]]
+id = "funnel-status"
+title = "Tailscale Funnel status"
+contexts = ["workspace"]
+command = ["node", "plugin/manage.js", "funnel-status"]
+
+[[actions]]
+id = "setup"
+title = "Set up Tailscale: install, login and permissions"
+contexts = ["workspace"]
+command = ["node", "plugin/manage.js", "setup"]
+
+[[panes]]
+id = "setup"
+title = "Tailscale setup"
+placement = "overlay"
+command = ["node", "plugin/manage.js", "setup-ui"]
+
+[[actions]]
+id = "cloudflare-on"
+title = "Cloudflare Tunnel: on"
+contexts = ["workspace"]
+command = ["node", "plugin/manage.js", "cloudflare-on"]
+
+[[actions]]
+id = "cloudflare-off"
+title = "Cloudflare Tunnel: off"
+contexts = ["workspace"]
+command = ["node", "plugin/manage.js", "cloudflare-off"]
+
+[[actions]]
+id = "cloudflare-status"
+title = "Cloudflare Tunnel: status"
+contexts = ["workspace"]
+command = ["node", "plugin/manage.js", "cloudflare-status"]
+
+[[actions]]
+id = "cloudflare-setup"
+title = "Cloudflare Tunnel: setup"
+contexts = ["workspace"]
+command = ["node", "plugin/manage.js", "cloudflare-setup"]
+
+[[panes]]
+id = "cloudflare-setup"
+title = "Cloudflare setup"
+placement = "overlay"
+command = ["node", "plugin/manage.js", "cloudflare-setup-ui"]

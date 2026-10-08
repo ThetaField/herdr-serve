@@ -1,0 +1,5 @@
+# Replace the hostname, point its DNS at the host, and open ports 80/443.
+# Set HERDR_SERVE_ORIGIN=https://herdr.example.com in server.env.
+herdr.example.com {
+    reverse_proxy 127.0.0.1:7681
+}

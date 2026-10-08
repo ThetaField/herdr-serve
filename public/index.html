@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+  <meta name="theme-color" content="#11151b">
+  <title>Herdr · Remote terminal</title>
+  <link rel="stylesheet" href="/app.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <main id="login" class="login">
+    <form id="login-form" class="card">
+      <div class="login-toolbar"><div class="brand"><span class="mark">h</span> herdr <span class="tag">serve</span></div><button type="button" class="theme-toggle" data-theme-toggle>Light theme</button></div>
+      <span class="eyebrow">YOUR WORKSPACE, WITH YOU</span>
+      <h1>A window into<br>your running work.</h1>
+      <p>Connect to your Herdr session. Pick up from your phone, tablet, or another computer.</p>
+      <label for="token">Access token</label>
+      <input id="token" name="token" type="password" autocomplete="current-password" placeholder="Paste your server access token" required>
+      <label class="remember"><input id="remember" type="checkbox" checked> Remember this device for 30 days</label>
+      <button class="primary" id="login-button" type="submit">Connect to Herdr <span>↗</span></button>
+      <p id="login-error" class="error" role="alert"></p>
+      <div class="footnote"><span class="dot"></span> Your agents keep running when you disconnect.</div>
+    </form>
+  </main>
+  <main id="workspace" hidden>
+    <header>
+      <div class="brand"><span class="mark">h</span> herdr <span class="tag">serve</span></div>
+      <span id="status" role="status">Connecting…</span>
+      <button id="reconnect" hidden>Reconnect</button>
+      <button id="logout">Sign out</button>
+    </header>
+    <div class="session-bar">
+      <span class="session-info"><span class="dot"></span> <span id="session-name">default</span></span>
+      <span id="size" class="session-info"></span>
+      <label>Width <select id="terminal-width" aria-label="Terminal width"><option value="fit">Fit</option><option value="80">80 cols</option><option value="120">120 cols</option></select></label>
+      <label>Text <select id="font-size" aria-label="Terminal font size"><option value="11">Small</option><option value="13" selected>Medium</option><option value="16">Large</option></select></label>
+      <button type="button" class="theme-toggle" data-theme-toggle>Light theme</button>
+      <button id="focus-mode" aria-pressed="false">Focus</button>
+    </div>
+    <div id="terminal-scroller" tabindex="0" aria-label="Terminal viewport; swipe sideways in fixed-width mode"><div id="terminal" aria-label="Herdr terminal"></div></div>
+    <div id="notice" role="alert" hidden></div>
+    <nav class="keys" aria-label="Terminal keys">
+      <button data-key="prefix" title="Herdr prefix, Ctrl+B">Herdr</button>
+      <button data-key="escape">Esc</button><button data-key="tab">Tab ⇥</button>
+      <button id="ctrl" aria-pressed="false">Ctrl</button>
+      <button data-key="interrupt">Ctrl C</button>
+      <button data-key="up" aria-label="Up arrow">↑</button><button data-key="down" aria-label="Down arrow">↓</button><button data-key="left" aria-label="Left arrow">←</button><button data-key="right" aria-label="Right arrow">→</button>
+      <button data-key="enter">Enter ↵</button>
+      <button data-key="backspace" aria-label="Backspace">⌫</button>
+      <button id="keyboard" aria-pressed="false">Keyboard</button>
+    </nav>
+    <form id="compose"><textarea id="message" rows="1" maxlength="16000" aria-label="Terminal text" placeholder="Type or paste text…" autocapitalize="off" spellcheck="false"></textarea><button type="submit">Send ↵</button></form>
+    <footer>Live Herdr session <span>Herdr key = Ctrl B · Send submits text + Enter</span></footer>
+  </main>
+</body>
+</html>

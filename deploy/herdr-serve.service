@@ -1,0 +1,19 @@
+[Unit]
+Description=Herdr browser access
+After=network.target
+
+[Service]
+Type=simple
+# Adjust this checkout path and Node path before installing.
+WorkingDirectory=%h/projects/herdr-serve
+ExecStart=/usr/bin/node src/cli.js
+Environment=PATH=%h/.local/bin:/usr/local/bin:/usr/bin:/bin
+EnvironmentFile=-%h/.config/herdr-serve/server.env
+Restart=on-failure
+RestartSec=3
+UMask=0077
+# Herdr's detached session server must survive a web bridge restart.
+KillMode=process
+
+[Install]
+WantedBy=default.target
