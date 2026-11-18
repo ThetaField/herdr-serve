@@ -17,7 +17,7 @@ The plugin adds start/stop/status actions and a terminal control panel. It launc
 Install from GitHub after the public repository is available:
 
 ```sh
-herdr plugin install mkstdio/herdr-serve
+herdr plugin install ThetaField/herdr-serve
 herdr plugin action invoke herdr.serve.panel
 ```
 

@@ -26,10 +26,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mkstdio/herdr-serve.git"
+    "url": "https://github.com/ThetaField/herdr-serve.git"
   },
-  "homepage": "https://github.com/mkstdio/herdr-serve#readme",
+  "homepage": "https://github.com/ThetaField/herdr-serve#readme",
   "bugs": {
-    "url": "https://github.com/mkstdio/herdr-serve/issues"
+    "url": "https://github.com/ThetaField/herdr-serve/issues"
   }
 }
